@@ -18,9 +18,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Autowired
 	private UsuarioRepository repository;
 
-//	public UsuarioServiceImpl(UsuarioRepository repository) {
-//		this.repository = repository;
-//	}
+	public UsuarioServiceImpl(UsuarioRepository repository) {
+		this.repository = repository;
+	}
 	
 	@Override
 	public Usuario autenticar(String email, String senha) {
@@ -28,11 +28,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 		if(!usuario.isPresent()) {
 			throw new ErroAutenticacao("Usuário não encontrado para o email informado!");
 		}
-		
 		if(!usuario.get().getSenha().equals(senha)) {
 			throw new ErroAutenticacao("Senha inválida!");
 		}
-		
 		return usuario.get();
 	}
 	
