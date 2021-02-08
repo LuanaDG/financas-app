@@ -1,15 +1,15 @@
 package com.financas.repository;
 
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +41,8 @@ public class LancamentoRepositoryTest {
 		Lancamento lancamento = criarLancamento();
 		
 		lancamento = repository.save(lancamento);
-		//Assertions.assertThat(lancamento.getId()).isNotNull();
-		assertNotNull(lancamento.getId());
+		Assertions.assertThat(lancamento.getId()).isNotNull();
+//		assertNotNull(lancamento.getId());
 	}
 	
 	@Test
@@ -55,8 +55,8 @@ public class LancamentoRepositoryTest {
 		repository.delete(lancamento);
 		
 		Lancamento lancamentoInexistente = entityManager.find(Lancamento.class, lancamento.getId());
-		//Assertions.assertThat(lancamentoInexistente).isNull();
-		assertNull(lancamentoInexistente);
+		Assertions.assertThat(lancamentoInexistente).isNull();
+//		assertNull(lancamentoInexistente);
 		
 	}
 	
